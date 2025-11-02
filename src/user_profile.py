@@ -116,22 +116,16 @@ class UserProfile:
             True if all fields are valid, False otherwise
         """
         validation_errors = {}
-        # Validate date of birth format
         if not self.valid_dob(self.dob):
             validation_errors["dob"] = ["Invalid date of birth format"]
-        # Validate location format
         if not self.valid_location(self.location):
             validation_errors["location"] = ["Invalid location format"]
-        # Validate name format (2-3 parts, each capitalized)
         if not self.valid_name(self.name):
             validation_errors["name"] = ["Invalid name format"]
-        # Validate email format
         if not self.valid_email(self.email):
             validation_errors["email"] = ["Invalid email format"]
-        # Validate password security requirements
         if not self.valid_password(self.password):
             validation_errors["password"] = ["Invalid password format"]
-        # If any errors found, print them and return False
         if validation_errors:
             print(f"validation failed for {', '.join(validation_errors.keys())}")
             return False
@@ -151,11 +145,9 @@ class UserProfile:
         Raises:
             ValueError: If date format is not supported
         """
-        # Try ISO format first (YYYY-MM-DD)
         try:
             return datetime.strptime(date_str, "%Y-%m-%d")
         except ValueError:
-            # Try US format (MM/DD/YYYY)
             try:
                 return datetime.strptime(date_str, "%m/%d/%Y")
             except ValueError:
@@ -174,7 +166,6 @@ class UserProfile:
             reference_date = datetime.today()
         dob_date = self.extract_date(self.dob)
         age_result = reference_date.year - dob_date.year
-        # Adjust if birthday hasn't occurred yet this year
         if reference_date.month < dob_date.month or (reference_date.month == dob_date.month and reference_date.day < dob_date.day):
             age_result -= 1
         return age_result

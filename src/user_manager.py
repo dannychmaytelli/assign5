@@ -94,7 +94,6 @@ class UserProfileManager:
             json_file: Path to output JSON file
         """
         profile_list = []
-        # Convert each profile to dictionary format
         for user_profile in self.user_profiles.values():
             profile_data = {
                 'name': user_profile.name,
@@ -122,7 +121,6 @@ class UserProfileManager:
         """
         with open(json_file, mode='r') as input_file:
             loaded_data = json.load(input_file)
-        # Handle both single dict and list of dicts
         if isinstance(loaded_data, dict):
             profile_items = [loaded_data]
         elif isinstance(loaded_data, list):
@@ -130,7 +128,6 @@ class UserProfileManager:
         else:
             print(f"ERROR: JSON file must contain a dictionary or list")
             return
-        # Process each profile item
         for profile_item in profile_items:
             try:
                 user_profile = UserProfile(
