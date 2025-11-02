@@ -32,8 +32,8 @@ class UserProfile:
     # Validate password format
     @staticmethod
     def valid_password(password: str) -> bool:
-        password_pattern = r'^(?=^[A-Z])(?=.*[a-z]?)(?=.*\d)(?=.*[@$!%*?&])[A-z\d@$!%*?&]{8,}$'
-        return re.match(password_pattern, password) is not None
+        regex = r'^(?=^[A-Z])(?=.*[a-z]?)(?=.*\d)(?=.*[@$!%*?&])[A-z\d@$!%*?&]{8,}$'
+        return re.match(regex, password) is not None
     
     @staticmethod
     def valid_dob(dob: str) -> bool:
