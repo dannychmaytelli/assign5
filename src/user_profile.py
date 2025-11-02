@@ -98,19 +98,8 @@ class UserProfile:
         )
         
     def to_json(self, json_file: str) -> None:
-        data = {
-            'name': self.name,
-            'email': self.email,
-            'password': self.password,
-            'dob': self.dob,
-            'location': {
-                'city': self.location.city,
-                'state': self.location.state,
-                'country': self.location.country
-            }
-        }
         with open(json_file, 'w') as f:
-            json.dump(data, f, indent=4)
+            json.dump(self.to_dict(), f, indent=4)
 
     def to_dict(self) -> dict:
         return {
