@@ -1,14 +1,22 @@
-# User Profile Manager
+# Assignment 5 for UCLA-CS35L
 
-A tool for managing user profiles with validation and sorting functionality.
+## How to setup 
+To set up the project using pipenv:
 
-## Usage
+1. **Install pipenv** (if you don't already have it):
+   ```
+   pip install pipenv
+   ```
 
-Execute the main script with an input file and optional sort parameter:
+2. **Install dependencies**:
+   ```
+   pipenv install
+   ```
 
-```bash
-python -m src.main --input <input_file> --sort <sort_key>
-```
+3. **Activate the virtual environment**:
+   ```
+   pipenv shell
+   ```
 
-Sort keys: age, name, email, location
+Now you are ready to run the project Python files inside the pipenv environment!
 
