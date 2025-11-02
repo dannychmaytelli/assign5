@@ -10,13 +10,14 @@ from .user_manager import UserProfileManager
 def _sort_profiles(manager: UserProfileManager, key: str):
     if key == "age":
         return manager.sort_profiles_by_age()
-    if key == "name":
+    elif key == "name":
         return manager.sort_profiles_by_name()
-    if key == "email":
+    elif key == "email":
         return manager.sort_profiles_by_email()
-    if key == "location":
+    elif key == "location":
         return manager.sort_profiles_by_location()
-    raise SystemExit(f"Unknown sort key: {key}")
+    else:
+        raise SystemExit(f"Unknown sort key: {key}")
 
 
 def _write_output(obj, output_path: Optional[str]):
