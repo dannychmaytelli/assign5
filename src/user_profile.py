@@ -29,9 +29,10 @@ class UserProfile:
         email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
         return re.match(email_pattern, email) is not None
     
+    # Validate password format
     @staticmethod
     def valid_password(password: str) -> bool:
-        password_pattern = r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+        password_pattern = r'^(?=^[A-Z])(?=.*[a-z]?)(?=.*\d)(?=.*[@$!%*?&])[A-z\d@$!%*?&]{8,}$'
         return re.match(password_pattern, password) is not None
     
     @staticmethod
@@ -107,11 +108,11 @@ class UserProfile:
         )
         
     def to_json(self, json_file: str) -> None:
-        with open(json_file, 'w') as f:
-            json.dump(self.to_dict(), f, indent=4)
+        with open(json_file, 'w') as output_file:
+            json.dump(self.to_dict(), output_file, indent=4)
 
     def to_dict(self) -> dict:
-        return {
+        profile_dict = {
             'name': self.name,
             'email': self.email,
             'password': self.password,
@@ -122,3 +123,4 @@ class UserProfile:
                 'country': self.location.country
             }
         }
+        return profile_dict

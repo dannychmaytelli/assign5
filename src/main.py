@@ -21,9 +21,9 @@ def _sort_profiles(manager: UserProfileManager, key: str):
 
 def _write_output(obj, output_path: Optional[str]):
     if output_path:
-        out_path = Path(output_path)
-        with out_path.open("w") as f:
-            json.dump(obj, f, indent=4)
+        output_file_path = Path(output_path)
+        with output_file_path.open("w") as file_handle:
+            json.dump(obj, file_handle, indent=4)
     else:
         json.dump(obj, sys.stdout, indent=4)
         sys.stdout.write("\n")
