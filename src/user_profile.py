@@ -49,7 +49,7 @@ class UserProfile:
     @staticmethod
     def valid_location(location: Location) -> bool:
         return location.valid_location()
-        
+
     def validate(self) -> bool:
         validation_errors = {}
         if not self.valid_name(self.name):

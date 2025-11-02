@@ -43,14 +43,14 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     manager = UserProfileManager()
     manager.load_profiles_from_json(args.input)
-    
+
     if len(manager.user_profiles) == 0:
         raise SystemExit("No valid profiles loaded from input file.")
-    
+
     sorted_profiles = _sort_profiles(manager, args.sort)
     output_list = [p.to_dict() for p in sorted_profiles]
     _write_output(output_list, args.output)
-    
+
     return 0
 
 
