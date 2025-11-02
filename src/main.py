@@ -7,18 +7,13 @@ from typing import List, Optional
 from .user_manager import UserProfileManager
 
 
-# Sort profiles by the specified key
 def _sort_profiles(manager: UserProfileManager, key: str):
-    # Sort by age
     if key == "age":
         return manager.sort_profiles_by_age()
-    # Sort by name
     if key == "name":
         return manager.sort_profiles_by_name()
-    # Sort by email
     if key == "email":
         return manager.sort_profiles_by_email()
-    # Sort by location
     if key == "location":
         return manager.sort_profiles_by_location()
     raise SystemExit(f"Unknown sort key: {key}")
@@ -35,7 +30,6 @@ def _write_output(obj, output_path: Optional[str]):
 
 
 def main(argv: Optional[List[str]] = None) -> int:
-    # Set up argument parser
     parser = argparse.ArgumentParser(description="User profiles processor")
     parser.add_argument("--input", "-i", required=True, help="Path to input JSON (single user or list)")
     parser.add_argument("--output", "-o", help="Path to write output JSON (defaults to stdout)")
@@ -47,15 +41,12 @@ def main(argv: Optional[List[str]] = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    # Create manager and load profiles
     manager = UserProfileManager()
     manager.load_profiles_from_json(args.input)
     
-    # Check if any profiles were loaded
     if len(manager.user_profiles) == 0:
         raise SystemExit("No valid profiles loaded from input file.")
     
-    # Sort and output
     sorted_profiles = _sort_profiles(manager, args.sort)
     output_list = [p.to_dict() for p in sorted_profiles]
     _write_output(output_list, args.output)
