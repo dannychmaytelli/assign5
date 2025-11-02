@@ -63,7 +63,7 @@ class UserProfile:
         if not self.valid_location(self.location):
             validation_errors["location"] = ["Invalid location format"]
         if validation_errors:
-            print(f"Validation failed for {', '.join(validation_errors.keys())}")
+            print(f"validation failed for {', '.join(validation_errors.keys())}")
             return False
         return True
     

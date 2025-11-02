@@ -62,7 +62,7 @@ class UserProfileManager:
         elif isinstance(json_data, list):
             profile_items = json_data
         else:
-            print(f"Error: JSON file must contain a dictionary or list")
+            print(f"ERROR: JSON file must contain a dictionary or list")
             return
         for profile_data in profile_items:
             try:
@@ -78,6 +78,6 @@ class UserProfileManager:
                 except ValueError:
                     pass
             except KeyError as e:
-                print(f"Error loading profile: missing field {e}")
+                print(f"error loading profile: missing field {e}")
             except Exception as e:
-                print(f"Error loading profile: {e}")
+                print(f"error loading profile: {e}")
