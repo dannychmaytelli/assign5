@@ -38,29 +38,29 @@ class UserProfileManager:
         return sorted(self.user_profiles.values(), key=lambda x: (x.location.country, x.location.state, x.location.city))
     
     def save_profiles_to_json(self, json_file: str):
-        data = []
-        for profile in self.user_profiles.values():
-            data.append({
-                'name': profile.name,
-                'email': profile.email,
-                'password': profile.password,
-                'dob': profile.dob,
+        profile_list = []
+        for user_profile in self.user_profiles.values():
+            profile_list.append({
+                'name': user_profile.name,
+                'email': user_profile.email,
+                'password': user_profile.password,
+                'dob': user_profile.dob,
                 'location': {
-                    'city': profile.location.city,
-                    'state': profile.location.state,
-                    'country': profile.location.country
+                    'city': user_profile.location.city,
+                    'state': user_profile.location.state,
+                    'country': user_profile.location.country
                 }
             })
         with open(json_file, 'w') as f:
-            json.dump(data, f, indent=4)
+            json.dump(profile_list, f, indent=4)
     
     def load_profiles_from_json(self, json_file: str):
         with open(json_file, 'r') as f:
-            data = json.load(f)
-        if isinstance(data, dict):
-            profile_items = [data]
-        elif isinstance(data, list):
-            profile_items = data
+            json_data = json.load(f)
+        if isinstance(json_data, dict):
+            profile_items = [json_data]
+        elif isinstance(json_data, list):
+            profile_items = json_data
         else:
             print(f"Error: JSON file must contain a dictionary or list")
             return
