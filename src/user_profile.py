@@ -71,8 +71,8 @@ class UserProfile:
         Returns:
             True if password meets requirements, False otherwise
         """
-        regex = r'^(?=^[A-Z])(?=.*[a-z]?)(?=.*\d)(?=.*[@$!%*?&])[A-z\d@$!%*?&]{8,}$'
-        return re.match(regex, password) is not None
+        password_pattern = r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+        return re.match(password_pattern, password) is not None
     
     @staticmethod
     def valid_dob(dob: str) -> bool:
@@ -193,8 +193,8 @@ class UserProfile:
         Args:
             json_file: Path to output JSON file
         """
-        with open(json_file, mode='w') as output_file:
-            json.dump(self.to_dict(), output_file, indent=4)
+        with open(json_file, 'w') as f:
+            json.dump(self.to_dict(), f, indent=4)
 
     def to_dict(self) -> dict:
         """Convert user profile to dictionary representation.
@@ -202,15 +202,14 @@ class UserProfile:
         Returns:
             Dictionary containing all profile fields
         """
-        profile_dict = {
-            "name": self.name,
-            "email": self.email,
-            "password": self.password,
-            "dob": self.dob,
-            "location": {
-                "city": self.location.city,
-                "state": self.location.state,
-                "country": self.location.country
+        return {
+            'name': self.name,
+            'email': self.email,
+            'password': self.password,
+            'dob': self.dob,
+            'location': {
+                'city': self.location.city,
+                'state': self.location.state,
+                'country': self.location.country
             }
         }
-        return profile_dict
