@@ -1,0 +1,35 @@
+[
+    {
+        "name": "John Smith",
+        "email": "john.smith@example.com",
+        "password": "Secure123!",
+        "dob": "01/15/1990",
+        "location": {
+            "city": "LosAngeles",
+            "state": "CA",
+            "country": "US"
+        }
+    },
+    {
+        "name": "Jane Doe",
+        "email": "jane.doe@example.com",
+        "password": "Password1@",
+        "dob": "1995-06-20",
+        "location": {
+            "city": "NewYork",
+            "state": "NY",
+            "country": "US"
+        }
+    },
+    {
+        "name": "Jane Ddasdasdoe",
+        "email": "jane.doe@exasdasdample.com",
+        "password": "Pasdasdasdasdasdasdsword1@",
+        "dob": "1985-06-20",
+        "location": {
+            "city": "NewsssYork",
+            "state": "NY",
+            "country": "US"
+        }
+    }
+]
